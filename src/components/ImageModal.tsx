@@ -23,7 +23,7 @@ function ImageModal({
   const handlePrevImage = () => {
     if (imageNumber && imageNumber > 1) {
       const newIndex = imageNumber - 1;
-      setImageUrl(`../public/work${newIndex}.jpg`);
+      setImageUrl(`../src/images/work${newIndex}.jpg`);
       setImageNumber(newIndex);
     }
   };
@@ -31,7 +31,7 @@ function ImageModal({
   const handleNextImage = () => {
     if (imageNumber && imageNumber < lastImageNumber) {
       const newIndex = imageNumber + 1;
-      setImageUrl(`../public/work${newIndex}.jpg`);
+      setImageUrl(`../src/images/work${newIndex}.jpg`);
       setImageNumber(newIndex);
     }
   };
@@ -60,7 +60,7 @@ function ImageModal({
           <img
             src={imageUrl}
             alt='Enlarged Image'
-            className='max-w-full max-h-full'
+            className='max-w-full max-h-full shadow-xl'
           />
           {!matches && (
             <svg

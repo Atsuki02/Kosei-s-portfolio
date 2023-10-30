@@ -31,57 +31,58 @@ function Work() {
   };
 
   return (
-    <div className='flex flex-col md:flex-row md:justify-center md:pt-20 md:gap-16 w-full h-full gap-8'>
+    <div className='flex flex-col md:flex-row md:justify-center md:pt-20 md:gap-16 w-full h-full gap-8 overflow-hidden'>
       <div className='relative flex flex-col gap-8 md:flex-col md:justify-start md:gap-16 cursor-pointer'>
         {firstColumnImages.map((src, index) => (
-          <div className='relative group' key={index}>
-            <motion.img
-              variants={
-                matches
-                  ? index % 2 === 0
-                    ? slideInFromBottomVariants
-                    : slideInFromLeftVariants
-                  : slideInVariants
-              }
-              initial='hidden'
-              whileInView='show'
-              viewport={{ once: true }}
+          <motion.div
+            className='relative group shadow-xl'
+            key={index}
+            variants={
+              matches
+                ? index % 2 === 0
+                  ? slideInFromBottomVariants
+                  : slideInFromLeftVariants
+                : slideInVariants
+            }
+            initial='hidden'
+            whileInView='show'
+            viewport={{ once: true }}
+            onClick={() => handleEnlargeImage(src, index)}
+          >
+            <img
               src={`../src/images/work${index + 1}.jpg`}
-              key={index}
               alt={`Work Image ${index + 1}`}
-              onClick={() => handleEnlargeImage(src, index)}
             />
             <div
               onClick={() => handleEnlargeImage(src, index)}
               className={`absolute inset-0 transition-opacity duration-300 opacity-0 bg-slate-700 group-hover:opacity-30`}
             ></div>
-          </div>
+          </motion.div>
         ))}
       </div>
       <div className='flex flex-col gap-8 md:flex-col md:justify-start md:gap-16 cursor-pointer'>
         {secondColumnImages.map((src, index) => (
-          <div className='relative group' key={index}>
-            <motion.img
-              variants={
-                matches
-                  ? index % 2 === 1
-                    ? slideInFromBottomVariants
-                    : slideInFromRightVariants
-                  : slideInVariants
-              }
-              initial='hidden'
-              whileInView='show'
-              viewport={{ once: true }}
-              src={src}
-              key={index}
-              alt={`Work Image ${index + 1}`}
-              onClick={() => handleEnlargeImage(src, index)}
-            />
+          <motion.div
+            className='relative shadow-xl group'
+            key={index}
+            variants={
+              matches
+                ? index % 2 === 1
+                  ? slideInFromBottomVariants
+                  : slideInFromRightVariants
+                : slideInVariants
+            }
+            initial='hidden'
+            whileInView='show'
+            viewport={{ once: true }}
+            onClick={() => handleEnlargeImage(src, index)}
+          >
+            <img src={src} alt={`Work Image ${index + 1}`} />
             <div
               onClick={() => handleEnlargeImage(src, index)}
               className={`absolute inset-0 transition-opacity duration-300 opacity-0 bg-slate-700 group-hover:opacity-30`}
             ></div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
