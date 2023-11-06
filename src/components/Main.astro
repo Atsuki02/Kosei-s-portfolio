@@ -1,8 +1,13 @@
 ---
+import { getMainImage } from "../library/microcms";
 import Work from "./Work";
+
+const response = await getMainImage({ fields: ["imageSrc"] });
+const mainImages = response.contents[0].imageSrc;
+const images = mainImages.map(mainImage => mainImage.url);
 
 ---
 
 	<main class="h-full min-h-screen p-8 md:p-16">
-		<Work client:visible/>
+		<Work images={images} client:visible />
 	</main>

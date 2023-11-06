@@ -1,45 +1,46 @@
-import { images } from "../constants/portfolio";
 import { useMediaQuery } from "../util/useMediaQuery";
 
 interface ImageModalProps {
-  imageNumber: number | null;
-  setImageNumber: React.Dispatch<React.SetStateAction<number | null>>;
+  images: string[];
+  imageIndex: number | null;
+  setImageIndex: React.Dispatch<React.SetStateAction<number | null>>;
   imageUrl: string;
   setImageUrl: React.Dispatch<React.SetStateAction<string | null>>;
   onClose: () => void;
 }
 
 function ImageModal({
-  imageNumber,
-  setImageNumber,
+  images,
+  imageIndex,
+  setImageIndex,
   imageUrl,
   setImageUrl,
   onClose,
 }: ImageModalProps) {
   const matches = useMediaQuery("(min-width: 675px)");
 
-  const lastImageNumber = images.length;
+  const lastimageIndex = images.length - 1;
 
   const handlePrevImage = () => {
-    if (imageNumber && imageNumber > 1) {
-      const newIndex = imageNumber - 1;
-      setImageUrl(`../src/images/work${newIndex}.jpg`);
-      setImageNumber(newIndex);
+    if (imageIndex && imageIndex > 0) {
+      const newIndex = imageIndex - 1;
+      setImageUrl(images[newIndex]);
+      setImageIndex(newIndex);
     }
   };
 
   const handleNextImage = () => {
-    if (imageNumber && imageNumber < lastImageNumber) {
-      const newIndex = imageNumber + 1;
-      setImageUrl(`../src/images/work${newIndex}.jpg`);
-      setImageNumber(newIndex);
+    if (imageIndex !== null && imageIndex < lastimageIndex) {
+      const newIndex = imageIndex + 1;
+      setImageUrl(images[newIndex]);
+      setImageIndex(newIndex);
     }
   };
 
   return (
-    <div className='fixed inset-0 bg-white bg-opacity-90 flex justify-center items-center z-80'>
+    <div className='fixed inset-0 bg-white bg-opacity-90 flex justify-center items-center z-50'>
       <div className='relative flex items-center justify-center gap-12 box-border h-screen w-screen py-4 px-8 md:py-8'>
-        {matches && imageNumber && imageNumber > 1 && (
+        {matches && typeof imageIndex === "number" && imageIndex > 0 && (
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
@@ -80,7 +81,7 @@ function ImageModal({
             </svg>
           )}
         </div>
-        {matches && imageNumber !== lastImageNumber && (
+        {matches && imageIndex !== lastimageIndex && (
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='none'

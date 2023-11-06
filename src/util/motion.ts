@@ -71,9 +71,26 @@ const slideInVariants = {
   },
 };
 
+const slideInFromRightNavVariants = {
+  hidden: {
+    x: 200,
+    transition: {
+      type: "tween",
+    },
+  },
+  show: {
+    x: 0,
+    transition: {
+      type: "tween",
+      ease: "easeOut",
+    },
+  },
+};
+
 export {
   slideInFromLeftVariants,
   slideInFromRightVariants,
   slideInFromBottomVariants,
   slideInVariants,
+  slideInFromRightNavVariants,
 };

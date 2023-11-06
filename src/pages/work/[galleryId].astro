@@ -1,0 +1,29 @@
+---
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getGalleryList } from "../../library/microcms";
+
+export async function getStaticPaths() {
+  return [
+    {params: {galleryId: 'vouge'}},
+    {params: {galleryId: 'rover'}},
+    {params: {galleryId: 'spot'}},
+  ];
+}
+
+const { galleryId } = Astro.params;
+
+
+  const gallery = await getGalleryList(galleryId);
+  console.log('--------------');
+  console.log(gallery);
+  console.log('--------------');
+
+---
+
+<Layout title="GalleryItem">
+  <Header/>
+  <div>{gallery.image}</div>
+  <Footer/>
+</Layout>

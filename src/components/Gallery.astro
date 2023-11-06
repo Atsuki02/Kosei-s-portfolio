@@ -1,0 +1,20 @@
+---
+import GalleryItem from "./GalleryItem.astro"
+import { getGalleries } from '../library/microcms.ts'
+
+
+
+const response = await getGalleries({ fields: ["id", "title", "imageSrc"] });
+const galleries = response.contents.map(res => ({
+  imageSrc: res.imageSrc.url,
+  title: res.title
+}));
+
+---
+
+<div class="flex flex-col w-full p-8 md:p-16 md:pt-20 md:gap-10 relative">
+  {galleries.map((item, index) => (
+      <GalleryItem key={index} imageSrc={item.imageSrc} title={item.title} />
+  ))}
+</div>
+
