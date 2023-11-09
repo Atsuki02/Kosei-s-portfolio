@@ -1,12 +1,21 @@
 ---
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
-import Layout from "../layouts/Layout.astro";
+import ContactForm from '../components/ContactForm.astro';
+import { ContactSection } from '../components/ContactSection';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Layout from '../layouts/Layout.astro';
 
 ---
 
-<Layout title="Work">
+<Layout title="Contact">
 	<Header/>
-    <div>555</div>
+        <main class="flex items-center justify-center flex-col h-full py-12 px-8 md:p-16">
+            <ContactForm/>
+            <ContactSection/>
+        </main>
 	<Footer/>
 </Layout>
+
+<style>
+	
+</style>

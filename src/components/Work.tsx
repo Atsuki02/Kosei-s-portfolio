@@ -8,6 +8,7 @@ import {
 import { useMediaQuery } from "../util/useMediaQuery";
 import { useState } from "react";
 import ImageModal from "./ImageModal";
+import { Loader } from "./Loader";
 
 function Work({ images }: { images: string[] }) {
   const matches = useMediaQuery("(min-width: 675px)");
@@ -31,75 +32,71 @@ function Work({ images }: { images: string[] }) {
   };
 
   return (
-    <>
-      {images && (
-        <div className='flex flex-col md:flex-row md:justify-center md:pt-20 md:gap-16 w-full h-full gap-8 overflow-hidden'>
-          <div className='flex flex-col gap-8 md:flex-col md:justify-start md:gap-16 cursor-pointer md:w-1/2'>
-            {firstColumnImages.map((src: string, index: number) => (
-              <motion.div
-                className='relative group shadow-xl'
-                key={index}
-                variants={
-                  matches
-                    ? index % 2 === 0
-                      ? slideInFromBottomVariants
-                      : slideInFromLeftVariants
-                    : slideInVariants
-                }
-                initial='hidden'
-                whileHover={matches ? { scale: 1.03 } : undefined}
-                whileInView='show'
-                viewport={{ once: true }}
-                onClick={() => handleEnlargeImage(src, index)}
-              >
-                <img src={src} alt={`Work Image ${index + 1}`} />
-                <div
-                  onClick={() => handleEnlargeImage(src, index)}
-                  className={`absolute inset-0 transition-opacity duration-300 opacity-0 bg-slate-700 group-hover:opacity-30`}
-                ></div>
-              </motion.div>
-            ))}
-          </div>
-          <div className='flex flex-col gap-8 md:flex-col md:justify-start md:gap-16 cursor-pointer md:w-1/2'>
-            {secondColumnImages.map((src: string, index: number) => (
-              <motion.div
-                className='relative group shadow-xl'
-                key={index}
-                variants={
-                  matches
-                    ? index % 2 === 1
-                      ? slideInFromBottomVariants
-                      : slideInFromRightVariants
-                    : slideInVariants
-                }
-                initial='hidden'
-                whileHover={matches ? { scale: 1.03 } : undefined}
-                whileInView='show'
-                viewport={{ once: true }}
-                onClick={() => handleEnlargeImage(src, index * 2 + 1)}
-              >
-                <img src={src} alt={`Work Image ${index + 1}`} />
-                <div
-                  onClick={() => handleEnlargeImage(src, index * 2 + 1)}
-                  className={`absolute inset-0 transition-opacity duration-300 opacity-0 bg-slate-700 group-hover:opacity-30`}
-                ></div>
-              </motion.div>
-            ))}
-          </div>
+    <div className='flex flex-col md:flex-row md:justify-center md:pt-20 md:gap-16 w-full h-full gap-8 overflow-hidden'>
+      <div className='flex flex-col gap-8 md:flex-col md:justify-start md:gap-16 cursor-pointer md:w-1/2'>
+        {firstColumnImages.map((src: string, index: number) => (
+          <motion.div
+            className='relative group shadow-xl'
+            key={index}
+            variants={
+              matches
+                ? index % 2 === 0
+                  ? slideInFromBottomVariants
+                  : slideInFromLeftVariants
+                : slideInVariants
+            }
+            initial='hidden'
+            whileHover={matches ? { scale: 1.03 } : undefined}
+            whileInView='show'
+            viewport={{ once: true }}
+            onClick={() => handleEnlargeImage(src, index)}
+          >
+            <img src={src} alt={`Work Image ${index + 1}`} />
+            <div
+              onClick={() => handleEnlargeImage(src, index)}
+              className={`absolute inset-0 transition-opacity duration-300 opacity-0 bg-slate-700 group-hover:opacity-30`}
+            ></div>
+          </motion.div>
+        ))}
+      </div>
+      <div className='flex flex-col gap-8 md:flex-col md:justify-start md:gap-16 cursor-pointer md:w-1/2'>
+        {secondColumnImages.map((src: string, index: number) => (
+          <motion.div
+            className='relative group shadow-xl'
+            key={index}
+            variants={
+              matches
+                ? index % 2 === 1
+                  ? slideInFromBottomVariants
+                  : slideInFromRightVariants
+                : slideInVariants
+            }
+            initial='hidden'
+            whileHover={matches ? { scale: 1.03 } : undefined}
+            whileInView='show'
+            viewport={{ once: true }}
+            onClick={() => handleEnlargeImage(src, index * 2 + 1)}
+          >
+            <img src={src} alt={`Work Image ${index + 1}`} />
+            <div
+              onClick={() => handleEnlargeImage(src, index * 2 + 1)}
+              className={`absolute inset-0 transition-opacity duration-300 opacity-0 bg-slate-700 group-hover:opacity-30`}
+            ></div>
+          </motion.div>
+        ))}
+      </div>
 
-          {imageUrl && (
-            <ImageModal
-              images={images}
-              imageIndex={imageIndex}
-              setImageIndex={setImageIndex}
-              imageUrl={imageUrl}
-              setImageUrl={setImageUrl}
-              onClose={handleCloseModal}
-            />
-          )}
-        </div>
+      {imageUrl && (
+        <ImageModal
+          images={images}
+          imageIndex={imageIndex}
+          setImageIndex={setImageIndex}
+          imageUrl={imageUrl}
+          setImageUrl={setImageUrl}
+          onClose={handleCloseModal}
+        />
       )}
-    </>
+    </div>
   );
 }
 

@@ -1,13 +1,10 @@
 ---
-import { getMainImage } from "../library/microcms";
+import { ContactSection } from "./ContactSection";
 import Work from "./Work";
-
-const response = await getMainImage({ fields: ["imageSrc"] });
-const mainImages = response.contents[0].imageSrc;
-const images = mainImages.map(mainImage => mainImage.url);
-
+const {images} = Astro.props
 ---
 
-	<main class="h-full min-h-screen p-8 md:p-16">
-		<Work images={images} client:visible />
+	<main class="flex items-center flex-col h-full min-h-screen p-8 md:p-16 md:pb-4">
+	  <Work images={images} client:visible />
+	  <ContactSection />
 	</main>

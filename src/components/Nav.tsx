@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useMediaQuery } from "../util/useMediaQuery";
 import { motion } from "framer-motion";
-import { slideInFromRightNavVariants } from "../util/motion";
 
 function Nav() {
   const [toggled, setToggled] = useState(false);
@@ -51,26 +50,32 @@ function Nav() {
       {matches && (
         <div>
           <div className='flex justify-between gap-10 text-slate-600 text-xl'>
-            <a href='/work'>Work</a>
-            <a href='/contact'>Contact</a>
+            <a href='/work' className='hover-underline-animation'>
+              Work
+            </a>
+            <a href='/contact' className='hover-underline-animation'>
+              Contact
+            </a>
           </div>
         </div>
       )}
 
       {!matches && toggled && (
-        <div className='fixed inset-0 bg-white bg-opacity-90 flex justify-center items-center z-40'>
-          <div className='flex flex-col justify-center items-center gap-10 text-xl w-full'>
-            <div className='flex items-center justify-center font-medium'>
-              <a href='/'>Home</a>
-            </div>
-            <div className='flex items-center justify-center font-medium'>
-              <a href='/work'>Work</a>
-            </div>
-            <div className='flex items-center justify-center font-medium'>
-              <a href='/contact'>Contact</a>
+        <>
+          <div className='fixed inset-0 flex justify-center items-center opacity-80 bg-white z-40'>
+            <div className='flex flex-col justify-center items-center gap-10 text-xl w-full text-slate-600'>
+              <div className='flex items-center justify-center font-medium'>
+                <a href='/'>Home</a>
+              </div>
+              <div className='flex items-center justify-center font-medium'>
+                <a href='/work'>Work</a>
+              </div>
+              <div className='flex items-center justify-center font-medium'>
+                <a href='/contact'>Contact</a>
+              </div>
             </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );

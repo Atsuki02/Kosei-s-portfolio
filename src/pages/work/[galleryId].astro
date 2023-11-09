@@ -1,29 +1,29 @@
 ---
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
+import Work from "../../components/Work";
 import Layout from "../../layouts/Layout.astro";
-import { getGalleryList } from "../../library/microcms";
+import { getGalleryDetail } from "../../library/microcms";
+import { getGalleries } from "../../library/microcms";
 
 export async function getStaticPaths() {
-  return [
-    {params: {galleryId: 'vouge'}},
-    {params: {galleryId: 'rover'}},
-    {params: {galleryId: 'spot'}},
-  ];
+  const resopnse = await getGalleries({fields: ['id']})
+  return resopnse.contents.map((res) => ({
+    params: {
+      galleryId: res.id
+    }
+  }))
 }
 
 const { galleryId } = Astro.params;
-
-
-  const gallery = await getGalleryList(galleryId);
-  console.log('--------------');
-  console.log(gallery);
-  console.log('--------------');
-
+const gallery = await getGalleryDetail(galleryId);
+const images = gallery.imagesSrc.map(imageSrc => imageSrc.url)
 ---
 
 <Layout title="GalleryItem">
   <Header/>
-  <div>{gallery.image}</div>
+    <main class="h-full min-h-screen p-8 md:p-16">
+      <Work images={images} client:visible />
+    </main>
   <Footer/>
 </Layout>

@@ -18,6 +18,7 @@ export type Gallery = {
     alt: string;
   };
   imageSrc: imageSrc;
+  imagesSrc: imageSrc[];
   category: string[];
   content: string;
 };
@@ -30,7 +31,7 @@ export type MainImage = {
     image: MicroCMSImage;
     alt: string;
   };
-  imageSrc: imageSrc;
+  imageSrc: imageSrc[];
   category: string[];
   content: string;
 };
@@ -57,12 +58,12 @@ export const getGalleries = async (queries?: MicroCMSQueries) => {
   });
 };
 
-export const getGalleryList = async (
+export const getGalleryDetail = async (
   galleryId: string,
   queries?: MicroCMSQueries
 ) => {
   return await client.getListDetail<Gallery>({
-    endpoint: "vouge",
+    endpoint: "galleries",
     contentId: galleryId,
     queries,
   });

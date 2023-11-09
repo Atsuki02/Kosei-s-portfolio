@@ -3,11 +3,15 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import Layout from "../layouts/Layout.astro";
 import Gallery from "../components/Gallery.astro";
+import { ContactSection } from "../components/ContactSection";
 
 ---
 
 <Layout title="Work">
 	<Header/>
-    <Gallery/>
+	<div class="flex items-center flex-col h-full min-h-screen p-8 md:p-16 md:pb-4">
+		<Gallery/>
+		<ContactSection/>
+	</div>
 	<Footer/>
 </Layout>
