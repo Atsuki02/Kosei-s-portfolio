@@ -14,12 +14,15 @@ const { title } = Astro.props;
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Inline+One:ital@0;1&family=Cardo:ital,wght@0,400;0,700;1,400&family=Caveat&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;0,9..40,1000;1,9..40,100;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600;1,9..40,700;1,9..40,800;1,9..40,900;1,9..40,1000&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<ViewTransitions/>
 	</head>
-	<body class="bg-white">
+	<body class="bg-white font-body">
 		<slot />
 	</body>
 </html>
@@ -89,36 +92,6 @@ const { title } = Astro.props;
   animation-delay: 0.5s;
 }
 
-/* @keyframes circleOpen {
-  0% {
-    transform: scale(0);
-    transform-origin: top right;
-    opacity: 1;
-    border-radius: 50%;
-  }
-  100% {
-    transform: scale(1);
-    transform-origin: top right;
-    opacity: 1;
-    border-radius: 0;
-  }
-}
-
-
-@keyframes fadeOut {
-	0% {
-    transform: scale(1);
-    transform-origin: top right;
-    opacity: 1;
-    border-radius: 50%;
-  }
-  100% {
-    transform: scale(0);
-    transform-origin: top right;
-    opacity: 0;
-    border-radius: 0;
-  }
-} */
 
 .hover-underline-animation {
   position: relative;

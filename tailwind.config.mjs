@@ -67,7 +67,9 @@ export default {
       },
     },
     fontFamily: {
+      main: { "DM Sans": ["DM Sans"] },
       body: [
+        "Cormorant Garamond",
         "Inter",
         "ui-sans-serif",
         "system-ui",

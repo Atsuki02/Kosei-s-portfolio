@@ -62,7 +62,7 @@ function Nav() {
 
       {!matches && toggled && (
         <>
-          <div className='fixed inset-0 flex justify-center items-center opacity-80 bg-white z-40'>
+          <div className='fixed inset-0 flex justify-center items-center opacity-90 bg-white z-40'>
             <div className='flex flex-col justify-center items-center gap-10 text-xl w-full text-slate-600'>
               <div className='flex items-center justify-center font-medium'>
                 <a href='/'>Home</a>
