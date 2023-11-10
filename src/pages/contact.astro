@@ -1,21 +1,16 @@
 ---
-import ContactForm from '../components/ContactForm.astro';
-import { ContactSection } from '../components/ContactSection';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import {ContactForm} from '../components/contact/ContactForm.tsx';
+import { ContactSection } from '../components/contact/ContactSection.tsx';
 import Layout from '../layouts/Layout.astro';
+
 
 ---
 
 <Layout title="Contact">
-	<Header/>
-        <main class="flex items-center justify-center flex-col h-full py-12 px-8 md:p-16">
-            <ContactForm/>
-            <ContactSection/>
-        </main>
-	<Footer/>
+    <main class="flex items-center justify-center flex-col h-full py-12 px-8 md:p-16">
+        <ContactForm client:only/>
+        <ContactSection/>
+    </main>
 </Layout>
 
-<style>
-	
-</style>
+    

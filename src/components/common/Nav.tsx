@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useMediaQuery } from "../util/useMediaQuery";
 import { motion } from "framer-motion";
+import { useMediaQuery } from "../../util/useMediaQuery";
 
 function Nav() {
   const [toggled, setToggled] = useState(false);

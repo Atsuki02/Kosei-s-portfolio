@@ -1,0 +1,10 @@
+---
+import { ContactSection } from "../contact/ContactSection";
+import Work from "./Work";
+const {images} = Astro.props
+---
+
+	<main class="flex items-center flex-col h-full min-h-screen p-8 md:p-16 md:pb-4">
+	  <Work images={images} client:visible />
+	  <ContactSection />
+	</main>

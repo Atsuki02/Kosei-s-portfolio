@@ -1,14 +1,13 @@
 import { motion } from "framer-motion";
+import { useMediaQuery } from "../../util/useMediaQuery";
+import { useState } from "react";
 import {
+  slideInFromBottomVariants,
   slideInFromLeftVariants,
   slideInFromRightVariants,
-  slideInFromBottomVariants,
   slideInVariants,
-} from "../util/motion";
-import { useMediaQuery } from "../util/useMediaQuery";
-import { useState } from "react";
-import ImageModal from "./ImageModal";
-import { Loader } from "./Loader";
+} from "../../util/motion";
+import ImageModal from "../common/ImageModal";
 
 function Work({ images }: { images: string[] }) {
   const matches = useMediaQuery("(min-width: 675px)");

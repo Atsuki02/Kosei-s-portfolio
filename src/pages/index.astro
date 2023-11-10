@@ -1,9 +1,6 @@
 ---
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import Main from '../components/Main.astro';
+import Main from '../components/common/Main.astro';
 import Layout from '../layouts/Layout.astro';
-
 import { getMainImage } from "../library/microcms";
 
 
@@ -13,11 +10,6 @@ const images = mainImages.map(mainImage => mainImage.url);
 ---
 
 <Layout title="Home">
-	<Header/>
-	  <Main images={images}/>
-	<Footer/>
+	<Main images={images}/>
 </Layout>
 
-<style>
-	
-</style>

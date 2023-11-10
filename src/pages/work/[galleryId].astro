@@ -1,7 +1,6 @@
 ---
-import Footer from "../../components/Footer.astro";
-import Header from "../../components/Header.astro";
-import Work from "../../components/Work";
+
+import Work from "../../components/work/Work";
 import Layout from "../../layouts/Layout.astro";
 import { getGalleryDetail } from "../../library/microcms";
 import { getGalleries } from "../../library/microcms";
@@ -21,9 +20,7 @@ const images = gallery.imagesSrc.map(imageSrc => imageSrc.url)
 ---
 
 <Layout title="GalleryItem">
-  <Header/>
-    <main class="h-full min-h-screen p-8 md:p-16">
-      <Work images={images} client:visible />
-    </main>
-  <Footer/>
+  <main class="h-full min-h-screen p-8 md:p-16">
+    <Work images={images} client:visible />
+  </main>
 </Layout>

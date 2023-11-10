@@ -1,6 +1,6 @@
 ---
 import GalleryItem from "./GalleryItem.astro"
-import { getGalleries } from '../library/microcms.ts'
+import { getGalleries } from '../../library/microcms.ts'
 
 const response = await getGalleries({ fields: ["id", "title", "imageSrc"] });
 const galleries = response.contents.map(res => ({
