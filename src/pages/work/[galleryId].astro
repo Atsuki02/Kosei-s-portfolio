@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 }
 
 const { galleryId } = Astro.params;
-const gallery = await getGalleryDetail(galleryId);
+const gallery = await getGalleryDetail(galleryId as string);
 const images = gallery.imagesSrc.map(imageSrc => imageSrc.url)
 ---
 
