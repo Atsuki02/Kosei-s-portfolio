@@ -1,4 +1,4 @@
-import { useMediaQuery } from "../../util/useMediaQuery";
+import { useMediaQuery } from "../../library/useMediaQuery";
 
 interface ImageModalProps {
   images: string[];

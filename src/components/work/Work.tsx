@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-import { useMediaQuery } from "../../util/useMediaQuery";
+import { useMediaQuery } from "../../library/useMediaQuery";
 import { useState } from "react";
 import {
   slideInFromBottomVariants,
   slideInFromLeftVariants,
   slideInFromRightVariants,
   slideInVariants,
-} from "../../util/motion";
+} from "../../library/motion";
 import ImageModal from "../common/ImageModal";
 
 function Work({ images }: { images: string[] }) {
