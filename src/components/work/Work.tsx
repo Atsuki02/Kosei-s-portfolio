@@ -51,10 +51,7 @@ function Work({ images }: { images: string[] }) {
             onClick={() => handleEnlargeImage(src, index)}
           >
             <img src={src} alt={`Work Image ${index + 1}`} />
-            <div
-              onClick={() => handleEnlargeImage(src, index)}
-              className={`absolute inset-0 transition-opacity duration-300 opacity-0 bg-slate-700 group-hover:opacity-30`}
-            ></div>
+            <div onClick={() => handleEnlargeImage(src, index)}></div>
           </motion.div>
         ))}
       </div>
@@ -77,10 +74,7 @@ function Work({ images }: { images: string[] }) {
             onClick={() => handleEnlargeImage(src, index * 2 + 1)}
           >
             <img src={src} alt={`Work Image ${index + 1}`} />
-            <div
-              onClick={() => handleEnlargeImage(src, index * 2 + 1)}
-              className={`absolute inset-0 transition-opacity duration-300 opacity-0 bg-slate-700 group-hover:opacity-30`}
-            ></div>
+            <div onClick={() => handleEnlargeImage(src, index * 2 + 1)}></div>
           </motion.div>
         ))}
       </div>
