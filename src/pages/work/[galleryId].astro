@@ -19,7 +19,7 @@ const gallery = await getGalleryDetail(galleryId as string);
 const images = gallery.imagesSrc.map(imageSrc => imageSrc.url)
 ---
 
-<Layout title="GalleryItem">
+<Layout title="Gallery">
   <main class="h-full min-h-screen p-8 md:p-16">
     <Work images={images} client:visible />
   </main>
