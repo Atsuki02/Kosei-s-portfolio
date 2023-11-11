@@ -9,7 +9,7 @@ const {id, title, imageSrc} = Astro.props
     <div class="bg-white rounded-lg shadow-lg relative cursor-pointer">
         <Image src={imageSrc} height="192" width="300" alt="Image 2" class="w-full h-48 object-cover rounded-lg"/>
             <div class="absolute inset-0 bg-black opacity-60 z-30 rounded-lg">
-            <h2 class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-[14px] md:text-2xl font-semibold text-white">{title}</h2>
+            <h2 class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-lg md:text-2xl w-full font-semibold text-white">{title}</h2>
         </div>
     </div>
 </a>
