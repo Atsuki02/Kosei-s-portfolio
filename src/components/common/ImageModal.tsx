@@ -38,7 +38,7 @@ function ImageModal({
   };
 
   return (
-    <div className='fixed inset-0 bg-white bg-opacity-90 flex justify-center items-center z-50'>
+    <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/95 text-white backdrop-blur-sm'>
       <div className='relative flex items-center justify-center gap-12 box-border h-screen w-screen py-4 px-8 md:py-8'>
         {matches && typeof imageIndex === "number" && imageIndex > 0 && (
           <svg
@@ -47,7 +47,7 @@ function ImageModal({
             viewBox='0 0 24 24'
             strokeWidth={1.5}
             stroke='currentColor'
-            className='w-10 h-10 cursor-pointer hover:opacity-60'
+            className='w-10 h-10 cursor-pointer hover:opacity-60 transition-opacity'
             onClick={handlePrevImage}
           >
             <path
@@ -61,7 +61,7 @@ function ImageModal({
           <img
             src={imageUrl}
             alt='Enlarged Image'
-            className='max-w-full max-h-full shadow-xl'
+            className='max-w-full max-h-full rounded-[2px] border border-white/10 shadow-[0_0_90px_-40px_rgba(255,255,255,0.15)]'
           />
           {!matches && (
             <svg
@@ -70,7 +70,7 @@ function ImageModal({
               viewBox='0 0 24 24'
               strokeWidth={1.5}
               stroke='currentColor'
-              className='w-10 h-10 absolute cursor-pointer text-slate-600 -bottom-16 left-1/2 -translate-x-1/2'
+              className='w-10 h-10 absolute cursor-pointer text-white/80 -bottom-16 left-1/2 -translate-x-1/2'
               onClick={onClose}
             >
               <path
@@ -88,7 +88,7 @@ function ImageModal({
             viewBox='0 0 24 24'
             strokeWidth={1.5}
             stroke='currentColor'
-            className='w-10 h-10 cursor-pointer hover:opacity-60'
+            className='w-10 h-10 cursor-pointer hover:opacity-60 transition-opacity'
             onClick={handleNextImage}
           >
             <path
@@ -106,7 +106,7 @@ function ImageModal({
             viewBox='0 0 24 24'
             strokeWidth={1.5}
             stroke='currentColor'
-            className='w-8 h-8 absolute md:top-4 md:right-10 cursor-pointer hover:opacity-60'
+            className='w-8 h-8 absolute md:top-4 md:right-10 cursor-pointer hover:opacity-60 transition-opacity'
             onClick={onClose}
           >
             <path

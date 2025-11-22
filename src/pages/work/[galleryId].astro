@@ -20,7 +20,9 @@ const images = gallery.imagesSrc.map(imageSrc => imageSrc.url)
 ---
 
 <Layout title="Gallery">
-  <main class="h-full min-h-screen p-8 md:p-16">
-    <Work images={images} client:visible />
+  <main class="h-full min-h-screen bg-transparent px-6 py-20 md:px-12 md:py-24">
+    <div class="w-full max-w-7xl mx-auto">
+      <Work images={images} client:visible />
+    </div>
   </main>
 </Layout>
