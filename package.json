@@ -20,7 +20,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
-    "@react-three/postprocessing": "^3.0.4",
+    "@react-three/postprocessing": "^2.16.0",
     "@types/react": "^18.2.31",
     "@types/react-dom": "^18.2.14",
     "astro": "^3.6.5",
