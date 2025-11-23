@@ -23,38 +23,27 @@ const Background3D = () => {
         dpr={[1, 2]}
       >
         <Rig />
-        {/* 深淵な奥行きを作る霧 */}
-        <fog attach='fog' args={["#000000", 5, 30]} />
+        {/* 白背景に馴染むフォグ */}
+        <fog attach='fog' args={["#ffffff", 5, 30]} />
 
-        {/* メインの微細な光の粒子（浮遊する塵） */}
+        {/* メインの粒子：黒くシャープに */}
         <Sparkles
-          count={200}
+          count={150}
           scale={[20, 20, 10]}
-          size={4}
+          size={3}
           speed={0.2}
-          opacity={0.5}
-          color='#ffffff'
+          opacity={0.6}
+          color='#1a1a1a'
         />
 
-        {/* アクセントとなる少し大きめの粒子（薄い紫） */}
+        {/* アクセント：少し薄いグレーで奥行きを */}
         <Sparkles
           count={50}
           scale={[25, 25, 15]}
-          size={8}
+          size={5}
           speed={0.1}
           opacity={0.3}
-          color='#a78bfa'
-        />
-
-        {/* 遠景の星空 */}
-        <Stars
-          radius={100}
-          depth={50}
-          count={5000}
-          factor={4}
-          saturation={0}
-          fade
-          speed={0.5}
+          color='#4a4a4a'
         />
       </Canvas>
     </div>

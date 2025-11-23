@@ -45,7 +45,7 @@ function ImageModal({
   };
 
   return (
-    <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/95 text-white backdrop-blur-sm'>
+    <div className='fixed inset-0 z-50 flex items-center justify-center bg-white/80 text-black backdrop-blur-2xl'>
       <div className='relative flex items-center justify-center gap-12 box-border h-screen w-screen py-4 px-8 md:py-8'>
         {matches && typeof imageIndex === "number" && imageIndex > 0 && (
           <svg
@@ -54,7 +54,7 @@ function ImageModal({
             viewBox='0 0 24 24'
             strokeWidth={1.5}
             stroke='currentColor'
-            className='w-10 h-10 cursor-pointer hover:opacity-60 transition-opacity'
+            className='w-10 h-10 cursor-pointer hover:opacity-60 transition-opacity text-black'
             onClick={handlePrevImage}
           >
             <path
@@ -67,14 +67,14 @@ function ImageModal({
         <div className='relative flex justify-center items-center md:h-full w-full h-full'>
           {isLoading && (
             <div className='absolute inset-0 flex items-center justify-center'>
-              <div className='h-8 w-8 animate-spin rounded-full border-2 border-white/20 border-t-white' />
+              <div className='h-8 w-8 animate-spin rounded-full border-2 border-black/20 border-t-black' />
             </div>
           )}
           <img
             src={optimizeImage(imageUrl, 2400)}
             alt='Enlarged Image'
             onLoad={() => setIsLoading(false)}
-            className={`max-w-full max-h-full rounded-[2px] border border-white/10 shadow-[0_0_90px_-40px_rgba(255,255,255,0.15)] transition-opacity duration-300 ${
+            className={`max-w-full max-h-full rounded-[2px] border border-black/10 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)] transition-opacity duration-300 ${
               isLoading ? "opacity-0" : "opacity-100"
             }`}
           />
@@ -85,7 +85,7 @@ function ImageModal({
               viewBox='0 0 24 24'
               strokeWidth={1.5}
               stroke='currentColor'
-              className='w-10 h-10 absolute cursor-pointer text-white/80 bottom-8 left-1/2 -translate-x-1/2'
+              className='w-10 h-10 absolute cursor-pointer text-black/80 bottom-8 left-1/2 -translate-x-1/2'
               onClick={onClose}
             >
               <path
@@ -103,7 +103,7 @@ function ImageModal({
             viewBox='0 0 24 24'
             strokeWidth={1.5}
             stroke='currentColor'
-            className='w-10 h-10 cursor-pointer hover:opacity-60 transition-opacity'
+            className='w-10 h-10 cursor-pointer hover:opacity-60 transition-opacity text-black'
             onClick={handleNextImage}
           >
             <path
@@ -121,7 +121,7 @@ function ImageModal({
             viewBox='0 0 24 24'
             strokeWidth={1.5}
             stroke='currentColor'
-            className='w-8 h-8 absolute md:top-4 md:right-10 cursor-pointer hover:opacity-60 transition-opacity'
+            className='w-8 h-8 absolute md:top-4 md:right-10 cursor-pointer hover:opacity-60 transition-opacity text-black'
             onClick={onClose}
           >
             <path

@@ -43,7 +43,7 @@ function Work({ images }: { images: string[] }) {
               const altIndex = globalIndex + 1;
               return (
                 <motion.figure
-                  className='relative group overflow-hidden bg-[#111] shadow-[0_20px_70px_-60px_rgba(255,255,255,0.1)] cursor-none'
+                  className='relative group overflow-hidden bg-gray-100 shadow-[0_20px_70px_-60px_rgba(0,0,0,0.1)] cursor-none'
                   key={globalIndex}
                   variants={
                     matches
@@ -58,14 +58,14 @@ function Work({ images }: { images: string[] }) {
                   viewport={{ once: true }}
                   onClick={() => handleEnlargeImage(src, globalIndex)}
                 >
-                  <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100' />
+                  <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-40' />
                   <div className='absolute inset-x-5 top-5 flex items-center justify-between text-[10px] uppercase tracking-[0.32em] text-white mix-blend-difference'>
-                    <span className='rounded-full border border-white/20 bg-black/20 px-3 py-1 backdrop-blur-sm'>
+                    <span className='rounded-full border border-white/40 bg-black/10 px-3 py-1 backdrop-blur-sm'>
                       {formatIndex(index)}
                     </span>
-                    <span className='hidden items-center gap-2 text-white/70 transition duration-300 group-hover:flex'>
+                    <span className='hidden items-center gap-2 text-white/90 transition duration-300 group-hover:flex'>
                       Open
-                      <span className='h-px w-6 bg-white/60' />
+                      <span className='h-px w-6 bg-white/80' />
                     </span>
                   </div>
                   <img
@@ -85,7 +85,7 @@ function Work({ images }: { images: string[] }) {
               const altIndex = globalIndex + 1;
               return (
                 <motion.figure
-                  className='relative group overflow-hidden bg-[#111] shadow-[0_20px_70px_-60px_rgba(255,255,255,0.1)] cursor-none'
+                  className='relative group overflow-hidden bg-gray-100 shadow-[0_20px_70px_-60px_rgba(0,0,0,0.1)] cursor-none'
                   key={globalIndex}
                   variants={
                     matches
@@ -100,17 +100,14 @@ function Work({ images }: { images: string[] }) {
                   viewport={{ once: true }}
                   onClick={() => handleEnlargeImage(src, globalIndex)}
                 >
-                  {/*
-                  second column uses offset index for global numbering; figure overlay matches first column
-                */}
-                  <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100' />
+                  <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-40' />
                   <div className='absolute inset-x-5 top-5 flex items-center justify-between text-[10px] uppercase tracking-[0.32em] text-white mix-blend-difference'>
-                    <span className='rounded-full border border-white/20 bg-black/20 px-3 py-1 backdrop-blur-sm'>
+                    <span className='rounded-full border border-white/40 bg-black/10 px-3 py-1 backdrop-blur-sm'>
                       {formatIndex(globalIndex)}
                     </span>
-                    <span className='hidden items-center gap-2 text-white/70 transition duration-300 group-hover:flex'>
+                    <span className='hidden items-center gap-2 text-white/90 transition duration-300 group-hover:flex'>
                       Open
-                      <span className='h-px w-6 bg-white/60' />
+                      <span className='h-px w-6 bg-white/80' />
                     </span>
                   </div>
                   <img

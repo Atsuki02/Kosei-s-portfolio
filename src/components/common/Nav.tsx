@@ -110,13 +110,13 @@ function Nav() {
               <motion.span
                 animate={{ rotateZ: toggled ? 45 : 0, y: toggled ? 8 : 0 }}
                 className={`block h-0.5 w-8 transition-colors duration-300 ${
-                  toggled ? "bg-white" : "bg-white group-hover:bg-gray-300"
+                  toggled ? "bg-black" : "bg-black group-hover:bg-gray-600"
                 }`}
               ></motion.span>
               <motion.span
                 animate={{ width: toggled ? 0 : 24 }}
-                className={`block h-0.5 bg-white transition-all duration-300 ${
-                  toggled ? "" : "w-6 group-hover:w-8 group-hover:bg-gray-300"
+                className={`block h-0.5 bg-black transition-all duration-300 ${
+                  toggled ? "" : "w-6 group-hover:w-8 group-hover:bg-gray-600"
                 }`}
               ></motion.span>
               <motion.span
@@ -127,8 +127,8 @@ function Nav() {
                 }}
                 className={`block h-0.5 transition-all duration-300 ${
                   toggled
-                    ? "bg-white w-8"
-                    : "w-4 bg-white group-hover:w-8 group-hover:bg-gray-300"
+                    ? "bg-black w-8"
+                    : "w-4 bg-black group-hover:w-8 group-hover:bg-gray-600"
                 }`}
               ></motion.span>
             </div>
@@ -137,20 +137,20 @@ function Nav() {
         )}
 
       {matches && (
-        <div className='flex items-center gap-10 text-sm uppercase tracking-[0.24em] text-white mix-blend-difference font-light'>
+        <div className='flex items-center gap-10 text-sm uppercase tracking-[0.24em] text-black font-light'>
           <a
             href='/work'
-            className='hover:text-gray-300 transition-colors duration-300 relative group'
+            className='hover:text-gray-600 transition-colors duration-300 relative group'
           >
             Work
-            <span className='absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full'></span>
+            <span className='absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-300 group-hover:w-full'></span>
           </a>
           <a
             href='/contact'
-            className='hover:text-gray-300 transition-colors duration-300 relative group'
+            className='hover:text-gray-600 transition-colors duration-300 relative group'
           >
             Contact
-            <span className='absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full'></span>
+            <span className='absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-300 group-hover:w-full'></span>
           </a>
         </div>
       )}
@@ -164,12 +164,12 @@ function Nav() {
                 initial='initial'
                 animate='animate'
                 exit='exit'
-                className='fixed inset-0 bg-[#0a0a0a] z-50 flex flex-col justify-center items-center'
+                className='fixed inset-0 bg-white z-50 flex flex-col justify-center items-center'
               >
-                {/* Background Elements for Atmosphere */}
+                {/* Background Elements for Atmosphere - Light version */}
                 <div className='absolute inset-0 overflow-hidden pointer-events-none'>
-                  <div className='absolute top-[-20%] left-[-20%] w-[600px] h-[600px] bg-purple-900/20 rounded-full blur-[120px] opacity-40'></div>
-                  <div className='absolute bottom-[-20%] right-[-20%] w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-[120px] opacity-40'></div>
+                  <div className='absolute top-[-20%] left-[-20%] w-[600px] h-[600px] bg-gray-100 rounded-full blur-[120px] opacity-60'></div>
+                  <div className='absolute bottom-[-20%] right-[-20%] w-[600px] h-[600px] bg-slate-50 rounded-full blur-[120px] opacity-60'></div>
                 </div>
 
                 <motion.div
@@ -184,13 +184,13 @@ function Nav() {
                     >
                       <a
                         href={item.href}
-                        className='group flex items-baseline gap-6 text-white no-underline'
+                        className='group flex items-baseline gap-6 text-black no-underline'
                         onClick={() => setToggled(false)}
                       >
-                        <span className='text-xs text-gray-500 font-mono opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-y-1 group-hover:translate-y-0 transform'>
+                        <span className='text-xs text-gray-400 font-mono opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-y-1 group-hover:translate-y-0 transform'>
                           {item.number}
                         </span>
-                        <span className='text-5xl md:text-6xl font-thin uppercase tracking-widest hover:text-gray-300 transition-colors duration-300 hover:italic'>
+                        <span className='text-5xl md:text-6xl font-thin uppercase tracking-widest hover:text-gray-500 transition-colors duration-300 hover:italic'>
                           {item.title}
                         </span>
                       </a>
@@ -205,7 +205,7 @@ function Nav() {
                     transition: { delay: 0.8, duration: 0.5 },
                   }}
                   exit={{ opacity: 0 }}
-                  className='absolute bottom-12 left-0 w-full text-center text-xs text-gray-500 tracking-[0.3em] uppercase font-light'
+                  className='absolute bottom-12 left-0 w-full text-center text-xs text-gray-400 tracking-[0.3em] uppercase font-light'
                 >
                   Kosei Kitada — Portfolio
                 </motion.div>
