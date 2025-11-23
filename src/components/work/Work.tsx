@@ -8,6 +8,7 @@ import {
   slideInVariants,
 } from "../../library/motion";
 import ImageModal from "../common/ImageModal";
+import { optimizeImage } from "../../library/utils";
 
 function Work({ images }: { images: string[] }) {
   const matches = useMediaQuery("(min-width: 675px)");
@@ -68,9 +69,11 @@ function Work({ images }: { images: string[] }) {
                     </span>
                   </div>
                   <img
-                    src={src}
+                    src={optimizeImage(src, 1000)}
                     alt={`Work Image ${altIndex}`}
                     className='w-full object-cover transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05] group-hover:opacity-90'
+                    width='1000'
+                    loading='lazy'
                   />
                 </motion.figure>
               );
@@ -111,9 +114,11 @@ function Work({ images }: { images: string[] }) {
                     </span>
                   </div>
                   <img
-                    src={src}
+                    src={optimizeImage(src, 1000)}
                     alt={`Work Image ${altIndex}`}
                     className='w-full object-cover transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05] group-hover:opacity-90'
+                    width='1000'
+                    loading='lazy'
                   />
                 </motion.figure>
               );

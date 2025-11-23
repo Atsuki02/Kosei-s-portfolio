@@ -1,4 +1,6 @@
 ---
+import { optimizeImage } from "../../library/utils";
+
 const { id, title, imageSrc, index } = Astro.props;
 
 const formatIndex = (value: number) => `No. ${String(value + 1).padStart(2, "0")}`;
@@ -18,10 +20,15 @@ const formatIndex = (value: number) => `No. ${String(value + 1).padStart(2, "0")
 
   <div class="absolute inset-0 overflow-hidden">
     <img
-      src={imageSrc}
+      src={optimizeImage(imageSrc, 800)}
+      srcset={`${optimizeImage(imageSrc, 400)} 400w, ${optimizeImage(imageSrc, 800)} 800w, ${optimizeImage(imageSrc, 1200)} 1200w`}
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       alt={title}
       class="h-full w-full object-cover opacity-80 transition duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 group-hover:opacity-100"
       loading="lazy"
+      decoding="async"
+      width="800"
+      height="1067"
     />
     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60 transition duration-500 group-hover:opacity-40" />
   </div>

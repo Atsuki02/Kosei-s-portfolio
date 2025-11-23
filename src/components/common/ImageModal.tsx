@@ -1,4 +1,6 @@
+import { useState, useEffect } from "react";
 import { useMediaQuery } from "../../library/useMediaQuery";
+import { optimizeImage } from "../../library/utils";
 
 interface ImageModalProps {
   images: string[];
@@ -18,8 +20,13 @@ function ImageModal({
   onClose,
 }: ImageModalProps) {
   const matches = useMediaQuery("(min-width: 675px)");
+  const [isLoading, setIsLoading] = useState(true);
 
   const lastimageIndex = images.length - 1;
+
+  useEffect(() => {
+    setIsLoading(true);
+  }, [imageUrl]);
 
   const handlePrevImage = () => {
     if (imageIndex && imageIndex > 0) {
@@ -57,11 +64,19 @@ function ImageModal({
             />
           </svg>
         )}
-        <div className='relative flex justify-center items-center md:h-full'>
+        <div className='relative flex justify-center items-center md:h-full w-full h-full'>
+          {isLoading && (
+            <div className='absolute inset-0 flex items-center justify-center'>
+              <div className='h-8 w-8 animate-spin rounded-full border-2 border-white/20 border-t-white' />
+            </div>
+          )}
           <img
-            src={imageUrl}
+            src={optimizeImage(imageUrl, 2400)}
             alt='Enlarged Image'
-            className='max-w-full max-h-full rounded-[2px] border border-white/10 shadow-[0_0_90px_-40px_rgba(255,255,255,0.15)]'
+            onLoad={() => setIsLoading(false)}
+            className={`max-w-full max-h-full rounded-[2px] border border-white/10 shadow-[0_0_90px_-40px_rgba(255,255,255,0.15)] transition-opacity duration-300 ${
+              isLoading ? "opacity-0" : "opacity-100"
+            }`}
           />
           {!matches && (
             <svg
@@ -70,7 +85,7 @@ function ImageModal({
               viewBox='0 0 24 24'
               strokeWidth={1.5}
               stroke='currentColor'
-              className='w-10 h-10 absolute cursor-pointer text-white/80 -bottom-16 left-1/2 -translate-x-1/2'
+              className='w-10 h-10 absolute cursor-pointer text-white/80 bottom-8 left-1/2 -translate-x-1/2'
               onClick={onClose}
             >
               <path
