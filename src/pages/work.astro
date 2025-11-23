@@ -6,8 +6,10 @@ import { ContactSection } from "../components/contact/ContactSection";
 ---
 
 <Layout title="Work">
-	<div class="flex items-center flex-col h-full min-h-screen p-8 md:p-16 md:pb-4">
-		<Gallery/>
-		<ContactSection/>
+	<div class="flex items-center flex-col h-full min-h-screen bg-transparent px-6 py-20 md:px-12 md:py-24">
+		<div class="w-full max-w-7xl space-y-24 md:space-y-32">
+			<Gallery/>
+			<ContactSection client:only="react"/>
+		</div>
 	</div>
 </Layout>

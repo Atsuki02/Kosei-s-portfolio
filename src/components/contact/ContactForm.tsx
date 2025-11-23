@@ -27,51 +27,51 @@ export const ContactForm = () => {
   };
 
   return (
-    <section className='bg-white'>
+    <section className='w-full bg-transparent'>
       {success ? (
         <div
-          className=' flex items-center justify-center'
+          className='flex items-center justify-center'
           style={{ minHeight: "calc(100vh - 404px)" }}
         >
-          <h2 className='mb-8 text-4xl tracking-tight font-extrabold text-center text-gray-900'>
-            Thank you for your message!
+          <h2 className='text-3xl font-light tracking-tight text-white'>
+            Message sent.
           </h2>
         </div>
       ) : (
-        <div className='mx-auto max-w-screen-md'>
-          <h2 className='mb-8 text-4xl tracking-tight font-extrabold text-center text-gray-900'>
-            Contact Me
-          </h2>
-          <p className='mb-8 md:mb-16 font-light text-center text-gray-500 sm:text-xl'>
-            If you are interested in my skills or portfolio, please feel free to
-            reach out!
-          </p>
+        <div className='mx-auto max-w-xl border border-white/10 bg-black/40 px-6 py-10 backdrop-blur-md md:px-10 md:py-12'>
+          <div className='mb-8 space-y-2 text-center'>
+            <p className='text-[10px] uppercase tracking-[0.32em] text-white/60'>
+              Contact
+            </p>
+            <h2 className='text-3xl font-light tracking-tight text-white'>
+              Please feel free to reach out!
+            </h2>
+          </div>
           <form
             id='contactForm'
             action='#'
-            className='space-y-8'
+            className='space-y-7'
             onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleSubmit(e)}
           >
-            <div>
+            <div className='space-y-2'>
               <label
                 htmlFor='email'
-                className='block mb-2 text-sm font-medium text-gray-900'
+                className='block text-xs uppercase tracking-[0.2em] text-white/60'
               >
-                Your email
+                Email
               </label>
               <input
                 type='email'
                 id='email'
                 name='from_name'
-                className='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5'
-                placeholder=''
+                className='block w-full border-b border-white/20 bg-transparent pb-3 text-base text-white outline-none transition focus:border-white'
                 required
               />
             </div>
-            <div>
+            <div className='space-y-2'>
               <label
                 htmlFor='subject'
-                className='block mb-2 text-sm font-medium text-gray-900'
+                className='block text-xs uppercase tracking-[0.2em] text-white/60'
               >
                 Subject
               </label>
@@ -79,32 +79,32 @@ export const ContactForm = () => {
                 type='text'
                 id='subject'
                 name='form_subject'
-                className='block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500'
-                placeholder=''
+                className='block w-full border-b border-white/20 bg-transparent pb-3 text-base text-white outline-none transition focus:border-white'
                 required
               />
             </div>
-            <div className='sm:col-span-2'>
+            <div className='space-y-2'>
               <label
                 htmlFor='message'
-                className='block mb-2 text-sm font-medium text-gray-900'
+                className='block text-xs uppercase tracking-[0.2em] text-white/60'
               >
-                Your message
+                Message
               </label>
               <textarea
                 id='message'
-                rows={6}
+                rows={5}
                 name='form_message'
-                className='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-md shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500'
-                placeholder='Leave a comment...'
+                className='block w-full border border-white/10 bg-white/5 p-4 text-base text-white outline-none transition focus:border-white'
+                placeholder=''
               ></textarea>
             </div>
-            <div className='text-center md:text-left pt-4'>
+            <div className='pt-2 text-center md:text-left'>
               <button
                 type='submit'
-                className='py-3 px-5 text-sm font-medium text-center text-white rounded-md bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300'
+                className='inline-flex items-center gap-3 rounded-full border border-white bg-white px-6 py-3 text-sm uppercase tracking-[0.22em] text-black transition hover:-translate-y-[2px] hover:bg-white/90'
               >
-                Send message
+                Send
+                <span className='h-px w-6 bg-black/50' />
               </button>
             </div>
           </form>

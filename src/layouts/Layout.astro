@@ -2,6 +2,8 @@
 import { ViewTransitions } from 'astro:transitions';
 import Header from '../components/common/Header.astro';
 import Footer from '../components/common/Footer.astro';
+import CustomCursor from '../components/common/CustomCursor.tsx';
+import Background3D from '../components/common/Background3D.tsx';
 interface Props {
 	title: string;
 }
@@ -18,19 +20,96 @@ const { title } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Inline+One:ital@0;1&family=Cardo:ital,wght@0,400;0,700;1,400&family=Caveat&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;0,9..40,1000;1,9..40,100;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600;1,9..40,700;1,9..40,800;1,9..40,900;1,9..40,1000&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<ViewTransitions/>
 	</head>
-	<body class="bg-white font-body min-h-screen">
-    <Header/>
+	<body class="bg-black font-body min-h-screen text-white">
+    <div class="pointer-events-none fixed inset-0 -z-20 overflow-hidden">
+      <!-- Base: Deep Space Black-Blue -->
+      <div class="absolute inset-0 bg-[#030014]" />
+      
+      <!-- Ambient Glow: Top Left (Purple) -->
+      <div class="absolute -top-[20%] -left-[10%] h-[70%] w-[70%] rounded-full bg-purple-900/20 blur-[120px] mix-blend-screen" />
+      
+      <!-- Ambient Glow: Bottom Right (Blue) -->
+      <div class="absolute -bottom-[20%] -right-[10%] h-[70%] w-[70%] rounded-full bg-blue-900/10 blur-[120px] mix-blend-screen" />
+      
+      <!-- Ambient Glow: Center (Subtle warmth) -->
+      <div class="absolute top-1/2 left-1/2 h-[50%] w-[50%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-900/10 blur-[100px] mix-blend-screen" />
+
+      <!-- Noise Overlay for Texture -->
+      <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
+      
+      <!-- Vignette: Darken edges to focus on center content -->
+      <div class="absolute inset-0 bg-[radial-gradient(transparent_0%,#030014_100%)] opacity-80" />
+    </div>
+    <CustomCursor client:load transition:persist />
+    <Background3D client:load transition:persist />
+    <Header transition:persist />
 		<slot />
-    <Footer/>
+      <Footer transition:persist />
 	</body>
-</html>
-<style is:global>
+  <script>
+    import Lenis from 'lenis'
+
+    let lenis: Lenis | null = null
+    let rafId: number | null = null
+
+    function initLenis() {
+      // Clean up previous instance
+      if (lenis) {
+        lenis.destroy()
+      }
+      if (rafId) {
+        cancelAnimationFrame(rafId)
+      }
+
+      lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+      })
+
+      function raf(time: number) {
+        lenis?.raf(time)
+        rafId = requestAnimationFrame(raf)
+      }
+
+      rafId = requestAnimationFrame(raf)
+    }
+
+    // Initialize on first load
+    initLenis()
+
+    // Re-initialize after View Transitions
+    document.addEventListener('astro:page-load', initLenis)
+  </script>
+  <style is:global>
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
 	:root {
+
 		--accent: 136, 58, 234;
 		--accent-light: 224, 204, 250;
 		--accent-dark: 49, 10, 101;
@@ -41,10 +120,33 @@ const { title } = Astro.props;
 			white 60%
 		);
 	}
+
+  @media (min-width: 768px) {
+    html, body, a, button, input, textarea, label, .cursor-pointer {
+      cursor: none !important;
+    }
+  }
+
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
+		font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+		background: #050505;
+		color: #ffffff;
+		letter-spacing: 0.02em;
+	}
+
+	h1, h2, h3, h4 {
+		font-family: "Cormorant Garamond", "DM Sans", serif;
+		letter-spacing: 0.01em;
+	}
+
+	::selection {
+		background: #ffffff;
+		color: #000000;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
 	}
 	code {
 		font-family:
@@ -68,7 +170,7 @@ const { title } = Astro.props;
 }
 
 .dot {
-  background-color: slategray;
+  background-color: #ffffff;
   border-radius: 50%;
   animation: scale 1s infinite ease-in-out;
 }
@@ -98,7 +200,7 @@ const { title } = Astro.props;
 
 .hover-underline-animation {
   position: relative;
-  color: #000;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -107,10 +209,10 @@ const { title } = Astro.props;
   position: absolute;
   width: 100%;
   transform: scaleX(0);
-  height: 2px;
+  height: 1px;
   bottom: 0;
   left: 0;
-  background-color: #000;
+  background-color: #ffffff;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
@@ -144,3 +246,4 @@ const { title } = Astro.props;
 
 
 </style>
+</html>

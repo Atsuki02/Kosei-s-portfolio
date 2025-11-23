@@ -1,7 +1,8 @@
 const slideInFromLeftVariants = {
   hidden: {
     opacity: 0,
-    x: -100,
+    x: -50,
+    filter: "blur(10px)",
     transition: {
       type: "tween",
     },
@@ -9,17 +10,21 @@ const slideInFromLeftVariants = {
   show: {
     opacity: 1,
     x: 0,
+    filter: "blur(0px)",
     transition: {
-      type: "tween",
-      duration: 0.8,
-      ease: "easeIn",
+      type: "spring",
+      damping: 20,
+      stiffness: 100,
+      duration: 1.2,
     },
   },
 };
+
 const slideInFromRightVariants = {
   hidden: {
     opacity: 0,
-    x: 100,
+    x: 50,
+    filter: "blur(10px)",
     transition: {
       type: "tween",
     },
@@ -27,10 +32,12 @@ const slideInFromRightVariants = {
   show: {
     opacity: 1,
     x: 0,
+    filter: "blur(0px)",
     transition: {
-      type: "tween",
-      duration: 0.8,
-      ease: "easeIn",
+      type: "spring",
+      damping: 20,
+      stiffness: 100,
+      duration: 1.2,
     },
   },
 };
@@ -38,7 +45,51 @@ const slideInFromRightVariants = {
 const slideInFromBottomVariants = {
   hidden: {
     opacity: 0,
-    y: 100,
+    y: 50,
+    filter: "blur(10px)",
+    transition: {
+      type: "tween",
+    },
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      type: "spring",
+      damping: 20,
+      stiffness: 100,
+      duration: 1.2,
+    },
+  },
+};
+
+const slideInVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.95,
+    filter: "blur(10px)",
+    transition: {
+      type: "tween",
+    },
+  },
+  show: {
+    opacity: 1,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      type: "spring",
+      damping: 20,
+      stiffness: 100,
+      duration: 1.2,
+    },
+  },
+};
+
+const slideInNavVariants = {
+  hidden: {
+    opacity: 0,
+    y: -20,
     transition: {
       type: "tween",
     },
@@ -47,44 +98,11 @@ const slideInFromBottomVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      type: "tween",
+      type: "spring",
+      damping: 20,
+      stiffness: 100,
       duration: 0.8,
-      ease: "easeIn",
-    },
-  },
-};
-
-const slideInVariants = {
-  hidden: {
-    opacity: 0,
-    transition: {
-      type: "tween",
-    },
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      type: "tween",
-      duration: 0.8,
-      ease: "easeIn",
-    },
-  },
-};
-
-const slideInNavVariants = {
-  hidden: {
-    opacity: 0,
-    transition: {
-      type: "tween",
-    },
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      type: "tween",
-      duration: 0.8,
-      ease: "easeIn",
-      delay: 0.5,
+      delay: 0.2,
     },
   },
 };
@@ -92,32 +110,36 @@ const slideInNavVariants = {
 const slideOutVariants = {
   show: {
     opacity: 1,
+    y: 0,
     transition: {
       type: "tween",
     },
   },
   hidden: {
     opacity: 0,
+    y: -20,
     transition: {
       type: "tween",
-      duration: 0.8,
-      ease: "easeIn",
+      duration: 0.5,
     },
   },
 };
 
 const slideInFromRightNavVariants = {
   hidden: {
-    x: 200,
+    x: 100,
+    opacity: 0,
     transition: {
       type: "tween",
     },
   },
   show: {
     x: 0,
+    opacity: 1,
     transition: {
-      type: "tween",
-      ease: "easeOut",
+      type: "spring",
+      damping: 20,
+      stiffness: 100,
     },
   },
 };
@@ -140,6 +162,7 @@ const circleVariants = {
       transition: {
         duration: 0.8,
         delay: 0.2,
+        ease: [0.76, 0, 0.24, 1], // Custom bezier for smoother feel
       },
     },
   },
@@ -160,7 +183,7 @@ const circleVariants = {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: "linear",
+        ease: [0.76, 0, 0.24, 1],
       },
     },
   },
