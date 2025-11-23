@@ -3,7 +3,9 @@ import Nav from "./Nav";
 
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between h-24 md:h-32 bg-gradient-to-b from-white/90 to-transparent px-6 md:px-12 backdrop-blur-[2px] transition-all duration-500">
-    <a href="/" class="w-full text-lg md:text-2xl font-light tracking-[0.2em] uppercase text-black mix-blend-difference">Kosei Kitada</a>
-    <Nav client:only/>
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between h-24 md:h-32 px-6 md:px-12 pointer-events-none mix-blend-difference text-white">
+    <a href="/" class="pointer-events-auto text-lg md:text-xl font-light tracking-[0.2em] uppercase hover:opacity-60 transition-opacity duration-300">Kosei Kitada</a>
+    <div class="pointer-events-auto">
+        <Nav client:only="react"/>
+    </div>
 </header>
