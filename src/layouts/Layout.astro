@@ -3,6 +3,7 @@ import { ViewTransitions } from 'astro:transitions';
 import Header from '../components/common/Header.astro';
 import Footer from '../components/common/Footer.astro';
 import CustomCursor from '../components/common/CustomCursor.tsx';
+import Background3D from '../components/common/Background3D.tsx';
 interface Props {
 	title: string;
 }
@@ -24,7 +25,7 @@ const { title } = Astro.props;
 		<ViewTransitions/>
 	</head>
 	<body class="bg-black font-body min-h-screen text-white">
-    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div class="pointer-events-none fixed inset-0 -z-20 overflow-hidden">
       <!-- Base: Deep Space Black-Blue -->
       <div class="absolute inset-0 bg-[#030014]" />
       
@@ -44,6 +45,7 @@ const { title } = Astro.props;
       <div class="absolute inset-0 bg-[radial-gradient(transparent_0%,#030014_100%)] opacity-80" />
     </div>
     <CustomCursor client:load transition:persist />
+    <Background3D client:load transition:persist />
     <Header transition:persist />
 		<slot />
       <Footer transition:persist />
