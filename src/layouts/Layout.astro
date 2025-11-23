@@ -24,25 +24,17 @@ const { title } = Astro.props;
 		<title>{title}</title>
 		<ViewTransitions/>
 	</head>
-	<body class="bg-black font-body min-h-screen text-white">
+	<body class="bg-white font-body min-h-screen text-black selection:bg-black selection:text-white">
     <div class="pointer-events-none fixed inset-0 -z-20 overflow-hidden">
-      <!-- Base: Deep Space Black-Blue -->
-      <div class="absolute inset-0 bg-[#030014]" />
+      <!-- Base: Pure White -->
+      <div class="absolute inset-0 bg-white" />
       
-      <!-- Ambient Glow: Top Left (Purple) -->
-      <div class="absolute -top-[20%] -left-[10%] h-[70%] w-[70%] rounded-full bg-purple-900/20 blur-[120px] mix-blend-screen" />
+      <!-- Subtle Ambient: Soft Gray/Blue hint for depth -->
+      <div class="absolute -top-[20%] -left-[10%] h-[70%] w-[70%] rounded-full bg-gray-100/50 blur-[120px]" />
+      <div class="absolute -bottom-[20%] -right-[10%] h-[70%] w-[70%] rounded-full bg-slate-50/50 blur-[120px]" />
       
-      <!-- Ambient Glow: Bottom Right (Blue) -->
-      <div class="absolute -bottom-[20%] -right-[10%] h-[70%] w-[70%] rounded-full bg-blue-900/10 blur-[120px] mix-blend-screen" />
-      
-      <!-- Ambient Glow: Center (Subtle warmth) -->
-      <div class="absolute top-1/2 left-1/2 h-[50%] w-[50%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-900/10 blur-[100px] mix-blend-screen" />
-
-      <!-- Noise Overlay for Texture -->
-      <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
-      
-      <!-- Vignette: Darken edges to focus on center content -->
-      <div class="absolute inset-0 bg-[radial-gradient(transparent_0%,#030014_100%)] opacity-80" />
+      <!-- Noise Overlay for Texture (Subtle) -->
+      <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-multiply" />
     </div>
     <CustomCursor client:load transition:persist />
     <Background3D client:load transition:persist />
@@ -109,7 +101,6 @@ const { title } = Astro.props;
   }
 
 	:root {
-
 		--accent: 136, 58, 234;
 		--accent-light: 224, 204, 250;
 		--accent-dark: 49, 10, 101;
@@ -129,8 +120,8 @@ const { title } = Astro.props;
 
 	html {
 		font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-		background: #050505;
-		color: #ffffff;
+		background: #ffffff;
+		color: #1a1a1a;
 		letter-spacing: 0.02em;
 	}
 
@@ -140,8 +131,8 @@ const { title } = Astro.props;
 	}
 
 	::selection {
-		background: #ffffff;
-		color: #000000;
+		background: #000000;
+		color: #ffffff;
 	}
 
 	a {
@@ -170,7 +161,7 @@ const { title } = Astro.props;
 }
 
 .dot {
-  background-color: #ffffff;
+  background-color: #000000;
   border-radius: 50%;
   animation: scale 1s infinite ease-in-out;
 }
@@ -200,7 +191,7 @@ const { title } = Astro.props;
 
 .hover-underline-animation {
   position: relative;
-  color: #ffffff;
+  color: #000000;
   text-decoration: none;
 }
 
@@ -212,7 +203,7 @@ const { title } = Astro.props;
   height: 1px;
   bottom: 0;
   left: 0;
-  background-color: #ffffff;
+  background-color: #000000;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
