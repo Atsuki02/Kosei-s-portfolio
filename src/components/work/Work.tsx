@@ -12,8 +12,6 @@ import { optimizeImage } from "../../library/utils";
 
 function Work({ images }: { images: string[] }) {
   const matches = useMediaQuery("(min-width: 675px)");
-  const formatIndex = (value: number) =>
-    `Frame ${String(value + 1).padStart(2, "0")}`;
 
   const imagesLength = images.length;
   const halfIndex = Math.ceil(imagesLength / 2);
@@ -60,9 +58,6 @@ function Work({ images }: { images: string[] }) {
                 >
                   <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-40' />
                   <div className='absolute inset-x-5 top-5 flex items-center justify-between text-[10px] uppercase tracking-[0.32em] text-white mix-blend-difference'>
-                    <span className='rounded-full border border-white/40 bg-black/10 px-3 py-1 backdrop-blur-sm'>
-                      {formatIndex(index)}
-                    </span>
                     <span className='hidden items-center gap-2 text-white/90 transition duration-300 group-hover:flex'>
                       Open
                       <span className='h-px w-6 bg-white/80' />
@@ -102,9 +97,6 @@ function Work({ images }: { images: string[] }) {
                 >
                   <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-40' />
                   <div className='absolute inset-x-5 top-5 flex items-center justify-between text-[10px] uppercase tracking-[0.32em] text-white mix-blend-difference'>
-                    <span className='rounded-full border border-white/40 bg-black/10 px-3 py-1 backdrop-blur-sm'>
-                      {formatIndex(globalIndex)}
-                    </span>
                     <span className='hidden items-center gap-2 text-white/90 transition duration-300 group-hover:flex'>
                       Open
                       <span className='h-px w-6 bg-white/80' />

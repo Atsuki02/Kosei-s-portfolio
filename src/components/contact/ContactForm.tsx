@@ -44,7 +44,7 @@ export const ContactForm = () => {
               Contact
             </p>
             <h2 className='text-3xl font-light tracking-tight text-black'>
-              Please feel free to reach out!
+              Please feel free to reach out
             </h2>
           </div>
           <form
